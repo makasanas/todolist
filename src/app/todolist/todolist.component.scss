@@ -1,0 +1,155 @@
+
+$brand_color:#0e76bc;
+.c-check {
+    display: block;
+    user-select: none;
+    cursor: pointer;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    input:checked + .checkbox {
+        border-color: #efefef;
+    }
+    input:not(checked) + .check-icon svg path {
+        stroke  : #efefef;
+    }
+    input:checked + .check-icon svg path {
+        fill: #efefef;
+    }
+    input:checked + .check-icon svg polyline {
+        stroke-dashoffset: 0;
+    }
+    &:hover .check-icon svg path {
+        stroke-dashoffset: 0;
+    }
+    .check-icon {
+        position: relative;
+        // top: 2px;
+        float: left;
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+        margin-bottom: -3px;
+        border-radius: 3px;
+    }
+    .check-icon svg {
+        position: absolute;
+        top: -2px;
+        left: -2px;
+    }
+    .check-icon svg path {
+        fill: none;
+        stroke: #efefef;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 71px;
+        // stroke-dashoffset: 71px;
+        transition: all .6s ease;
+    }
+    .check-icon svg polyline {
+        fill: none;
+        stroke: #FFF;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 18px;
+        stroke-dashoffset: 18px;
+        transition: all .3s ease;
+    }
+    > span {
+        pointer-events: none;
+        vertical-align: middle;
+        line-height: 20px;
+    }
+    input{
+        position: absolute;
+        z-index: -1;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+}
+.todolist{
+    max-width: 500px;
+    margin: 150px auto;
+    padding: 0px 15px;
+    .addTask{
+        .input{
+            display: flex;
+            align-items: center;
+            border: 1px solid #0e76bc;
+            border-radius: 2px;
+        }
+        input{
+            width: calc(100% - 44px);
+            line-height: 44px;
+            border: 0px;
+            font-size: 16px;
+            padding: 0px 10px;
+        }
+        .btn{
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0e76bc;
+            cursor: pointer;
+            svg{
+                width: 20px;
+                height: 20px; 
+                path{
+                    fill: #fff;
+                }
+            }
+        }
+        p.error{
+            color: rgb(255, 0, 87);
+            padding: 5px 0px;
+            display: none;
+        }
+        &.has-error{
+            p.error{
+                display: block;
+            }
+        }
+       
+    }
+    ul{
+        margin: 20px 0px;
+        li{
+            padding: 8px 0px;
+            list-style: none;
+            &.remaining{        
+                label{
+                    span{
+                        color: $brand_color;
+                    }
+                }
+            }
+            &.done{
+                label{
+                    span{
+                        color: #d0d0d0;
+                        text-decoration: line-through;
+                    }
+                    .check-icon{
+                        svg{
+                            path{
+                                stroke: $brand_color;
+                                fill: $brand_color;
+                            }
+                            polyline{
+                                stroke-dashoffset: 0;
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+}
